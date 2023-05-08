@@ -5,6 +5,12 @@ using background jobs to add products to database, also proving jobs status info
 on specific endpoint alongside with classic DELETE
 implementation.
 
+### GitHub Actions
+
+This project uses GitHub Actions to automatically run tests on every push and 
+pull request to the main branch. The workflow configuration can be found in 
+the .github/workflows/nodejs.yml file.
+
 ### Quick start
 
 Install dependencies
