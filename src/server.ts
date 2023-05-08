@@ -9,8 +9,6 @@ import fastifyHelmet from '@fastify/helmet';
 import fastifyErrors from '~/implementation/fastify/plugin/error';
 import {FastifyConfig} from '~/implementation/fastify/fastify.config';
 
-import {DomainMapper} from '~/implementation/prisma/domain.mapper';
-
 import {LoggerServicePino} from '~/implementation/pino/logger.service';
 import {ConfigServiceNode} from '~/implementation/node/config.service';
 
@@ -29,7 +27,6 @@ container.register('ConfigService', {useValue: configService});
 container.register('LoggerService', {useValue: loggerService});
 container.register('PrismaClient', {useValue: prismaClient});
 
-container.register('DomainMapper', DomainMapper);
 container.register('ProductRepository', ProductRepositoryPrisma);
 
 import fastifyRoutes from '~/implementation/fastify/routes';

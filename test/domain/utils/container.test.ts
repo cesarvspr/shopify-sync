@@ -4,7 +4,6 @@ import {PrismaClient} from '@prisma/client';
 import {expect} from 'chai';
 
 import {PinoConfig} from '../../../src/implementation/pino/pino.config';
-import {DomainMapper} from '../../../src/implementation/prisma/domain.mapper';
 import {ConfigServiceNode} from '../../../src/implementation/node/config.service';
 import {LoggerServicePino} from '../../../src/implementation/pino/logger.service';
 import {ProductRepositoryPrisma} from '../../../src/implementation/prisma/product.repository';
@@ -46,10 +45,5 @@ describe('test container injections', () => {
     container.register('PrismaClient', {useValue: prismaClient});
 
     expect(container.isRegistered('PrismaClient')).to.be.equals(true);
-  });
-
-  it('Test proper registration of DomainMapper', async () => {
-    container.register('DomainMapper', DomainMapper);
-    expect(container.isRegistered('DomainMapper')).to.be.equals(true);
   });
 });

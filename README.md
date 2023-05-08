@@ -125,7 +125,6 @@ src
 │   │   ├── logger.service.ts
 │   │   └── pino.config.ts
 │   ├── prisma
-│   │   ├── domain.mapper.ts
 │   │   ├── order.repository.ts
 │   │   ├── persistence.error.ts
 │   │   └── product.repository.ts
