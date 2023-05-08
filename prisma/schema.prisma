@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "tracing"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          String @id @default(uuid()) @map("product_id")
+  name        String
+  platform_id String @unique
+
+  LineItem LineItem[]
+
+  @@map("product")
+}
+
+model Order {
+  id          String     @id @default(uuid())
+  platform_id String     @unique
+  line_items  LineItem[]
+
+  @@map("order")
+}
+
+model LineItem {
+  id         String   @id @default(uuid())
+  product_id String? // Make this nullable since it can be null according to the problem statement
+  product    Product? @relation(fields: [product_id], references: [platform_id])
+  order      Order    @relation(fields: [order_id], references: [platform_id])
+  order_id   String
+
+  @@map("lineItem")
+}

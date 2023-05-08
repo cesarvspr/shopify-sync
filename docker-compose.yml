@@ -1,0 +1,74 @@
+version: '3.7'
+services:
+  products-api:
+    image: node:18
+    container_name: products-api
+    working_dir: /usr/src/app
+    restart: always
+    depends_on:
+      postgres_database:
+        condition: service_healthy
+    ports:
+      - '8012:3000'   # Expose Node API server on 8012
+      - '9238:9229'   # Debugging related - server
+      - '9002:9002'   # Debugging related - queue
+    volumes:
+      - .:/usr/src/app
+      - ./temp:/usr/src/app/temp
+    expose:
+      - '9238'
+    env_file:
+      - .env.local
+    command: sh -i development.sh
+
+  postgres_database:
+    image: postgres:14.1-alpine
+    restart: always
+    user: postgres
+    container_name: postgres_database
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'password'
+      POSTGRES_DB: 'products'
+      POSTGRES_PORT: 5432
+    ports:
+      - '5432:5432'
+    expose:
+      - '5432'
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   container_name: api_pgadmin
+  #   links:
+  #     - postgres_database
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: user@domain.com
+  #     PGADMIN_DEFAULT_PASSWORD: 1234
+  #   restart: always
+  #   ports:
+  #     - 8083:80
+  #   volumes:
+  #     - dbdata-pgadmin:/var/lib/pgadmin
+  #   logging:
+  #     driver: none
+
+  redis:
+    container_name: redis
+    restart: always
+    image: redis:6.0-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - app_redis_data:/data
+
+volumes:
+  dbdata: null
+  dbdata-pgadmin: null
+  app_redis_data: null

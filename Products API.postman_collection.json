@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "b597478b-2aed-4762-b514-9226e31ce934",
+		"name": "Products API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17204508"
+	},
+	"item": [
+		{
+			"name": "Get all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8012/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8012",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8012/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "8012",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8012/products/:Id",
+					"host": [
+						"localhost"
+					],
+					"port": "8012",
+					"path": [
+						"products",
+						":Id"
+					],
+					"variable": [
+						{
+							"key": "Id",
+							"value": "6633862430957"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete product by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8012/products/:Id",
+					"host": [
+						"localhost"
+					],
+					"port": "8012",
+					"path": [
+						"products",
+						":Id"
+					],
+					"variable": [
+						{
+							"key": "Id",
+							"value": "09d8ba27-c024-49f0-8f20-72858f4bc15c"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product jobs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8012/product/jobs",
+					"host": [
+						"localhost"
+					],
+					"port": "8012",
+					"path": [
+						"product",
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sync products with shopify",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8012/product/sync",
+					"host": [
+						"localhost"
+					],
+					"port": "8012",
+					"path": [
+						"product",
+						"sync"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get job by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8012/product/jobs/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8012",
+					"path": [
+						"product",
+						"jobs",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
